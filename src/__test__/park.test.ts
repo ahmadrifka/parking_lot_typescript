@@ -69,7 +69,7 @@ describe('parking lot test',() => {
         park.createParkingSpace(3);
         park.park(bmw);
         park.park(porsche);
-        const result = park.leave(bmw, 1);
+        const result = park.leave(bmw);
 
         //Then
         expect(result).toEqual(expectedString)

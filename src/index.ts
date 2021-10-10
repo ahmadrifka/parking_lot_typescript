@@ -1,5 +1,5 @@
-import Park from './Park';
 import * as readline from 'readline';
+import Park from './park';
 
 let rl = readline.createInterface({
   input: process.stdin,
@@ -13,16 +13,16 @@ rl.on('line', (line:string) => {
     const data = line.trim().split(" ");
         switch(data[0].toLowerCase()) {
                   case 'create_parking_lot':
-                    dkatalisPark.createParkingSpace(parseInt(data[1]));
+                    console.log(dkatalisPark.createParkingSpace(parseInt(data[1])));
                     break;
                   case 'park':
-                    dkatalisPark.park(data[1]);
+                    console.log(dkatalisPark.park(data[1]));
                     break;
                   case 'leave':
-                    dkatalisPark.leave(data[1], parseInt(data[2]))
+                    console.log(dkatalisPark.leave(data[1], parseInt(data[2])))
                     break;
                   case 'status':
-                    dkatalisPark.status();
+                    console.log(dkatalisPark.status());
                     break;
                    case 'exit':
                         rl.close();

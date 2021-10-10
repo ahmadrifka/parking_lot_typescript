@@ -14,33 +14,30 @@ class Park implements ParkLot{
         for(let i = 0; i < size; i++){
             this.parkingSpace.push('');
         }
-        console.log(`Created parking lot with ${size} slots`)
+        return `Created parking lot with ${size} slots`;
     }
 
     park(licenseNumber:string){
         let index = this.parkingSpace.indexOf('');
         if(index < 0){
-            console.log('Sorry, parking lot is full');
-            return;
+            return'Sorry, parking lot is full';
         }
         let indexCar = this.parkingSpace.indexOf(licenseNumber);
         if(indexCar >= 0){
-            console.log(`Registration number ${licenseNumber} already parked`);
-            return;
+            return `Registration number ${licenseNumber} already parked`;
         }
         const slot = index + 1;
         this.parkingSpace.splice(index, 1, licenseNumber);
-        console.log('Allocated slot number: ', slot);
+        return 'Allocated slot number: ' + slot
     }
 
     leave(licenseNumber:string, hour:number=1){
         let index = this.parkingSpace.indexOf(licenseNumber);
         if(index < 0){
-            console.log(`Registration number ${licenseNumber} not found`);
-            return;
+            return `Registration number ${licenseNumber} not found`;
         }
         this.parkingSpace.splice(index, 1, '');
-        console.log(`Registration number ${licenseNumber} with Slot Number ${index+1} is free with Charge ${this.cost(hour)}`)
+        return `Registration number ${licenseNumber} with Slot Number ${index+1} is free with Charge ${this.cost(hour)}`;
     }
 
     cost(hour:number){
@@ -54,10 +51,13 @@ class Park implements ParkLot{
 
     status(){
         let i = 1;
-        console.log('Slot No. - Registration No.')
+        let result = 'Slot No. - Registration No.';
+        // console.log('Slot No. - Registration No.')
         for(let car of this.parkingSpace){
-            console.log(`${i++}  ${car}`)
+            // console.log(`${i++}  ${car}`)
+            result+= `\n${i++}  ${car}`;
         }
+        return result;
     }
     
 }
